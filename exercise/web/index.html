@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="app">
+	<head>
+		<style type="text/css">
+			.success {
+				background-color: green;
+			}
+			.warning  {
+				background-color: yellow;
+			}
+			.error {
+				background-color: red;
+			}
+		</style>
+
+		<meta charset="utf-8">
+		<title>GitHub System Status</title>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+		<script src="https://datejs.googlecode.com/files/date.js"></script>
+		<script src="githubclient.js"></script>
+	</head>
+	<body>
+		<div ng-controller="Github">
+			Github status is: <span class="{{getStatusClass(github.status)}}"> {{github.status}}</span>
+			<br/>
+			<br/>
+			<b>Availability history:</b>
+			<div ng-repeat="record in availability">
+				<span class="{{getStatusClass(record.status)}}">{{record.status}}</span> : {{record.last_updated}}
+			</div>
+		</div>
+	</body>
+</html>
